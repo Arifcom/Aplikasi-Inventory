@@ -13,6 +13,8 @@ use Yii;
  * @property string $penjual
  * @property int $total_harga
  * @property string $keterangan
+ *
+ * @property Barang $barang
  */
 class Penjualan extends \yii\db\ActiveRecord
 {
@@ -34,6 +36,7 @@ class Penjualan extends \yii\db\ActiveRecord
             [['id_barang', 'total_harga'], 'integer'],
             [['tanggal'], 'safe'],
             [['penjual', 'keterangan'], 'string', 'max' => 255],
+            [['id_barang'], 'exist', 'skipOnError' => true, 'targetClass' => Barang::className(), 'targetAttribute' => ['id_barang' => 'id']],
         ];
     }
 
@@ -50,5 +53,13 @@ class Penjualan extends \yii\db\ActiveRecord
             'total_harga' => 'Total Harga',
             'keterangan' => 'Keterangan',
         ];
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getBarang()
+    {
+        return $this->hasOne(Barang::className(), ['id' => 'id_barang']);
     }
 }

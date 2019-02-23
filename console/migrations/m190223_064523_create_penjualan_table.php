@@ -22,13 +22,13 @@ class m190223_064523_create_penjualan_table extends Migration
         ]);
 
         $this->createIndex(
-            'i-pembelian-id_barang',
+            'i-penjualan-id_barang',
             'penjualan',
             'id_barang'
         );
 
         $this->addForeignKey(
-            'fk-pembelian-id_barang',
+            'fk-penjualan-id_barang',
             'penjualan',
             'id_barang',
             'barang',
