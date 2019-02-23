@@ -8,6 +8,7 @@ use Yii;
  * This is the model class for table "penjualan".
  *
  * @property int $id
+ * @property int $id_barang
  * @property string $tanggal
  * @property string $penjual
  * @property int $total_harga
@@ -29,9 +30,9 @@ class Penjualan extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['tanggal', 'penjual', 'total_harga', 'keterangan'], 'required'],
+            [['id_barang', 'tanggal', 'penjual', 'total_harga', 'keterangan'], 'required'],
+            [['id_barang', 'total_harga'], 'integer'],
             [['tanggal'], 'safe'],
-            [['total_harga'], 'integer'],
             [['penjual', 'keterangan'], 'string', 'max' => 255],
         ];
     }
@@ -43,6 +44,7 @@ class Penjualan extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
+            'id_barang' => 'Id Barang',
             'tanggal' => 'Tanggal',
             'penjual' => 'Penjual',
             'total_harga' => 'Total Harga',

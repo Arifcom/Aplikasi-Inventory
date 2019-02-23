@@ -31,9 +31,10 @@ class Barang extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['gambar', 'nama', 'stok', 'satuan', 'harga_beli', 'harga_jual'], 'required'],
+            [['nama', 'stok', 'satuan', 'harga_beli', 'harga_jual'], 'required'],
             [['stok', 'harga_beli', 'harga_jual'], 'integer'],
-            [['gambar', 'nama', 'satuan'], 'string', 'max' => 255],
+            [['nama', 'satuan'], 'string', 'max' => 255],
+            [['gambar'],'file','skipOnEmpty'=>TRUE,'extensions'=>'jpg, png'],
         ];
     }
 

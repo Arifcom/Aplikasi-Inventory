@@ -8,10 +8,13 @@ use Yii;
  * This is the model class for table "pembelian".
  *
  * @property int $id
+ * @property int $id_barang
  * @property string $tanggal
  * @property string $pembeli
  * @property int $total_harga
  * @property string $keterangan
+ *
+ * @property Barang $barang
  */
 class Pembelian extends \yii\db\ActiveRecord
 {
@@ -29,10 +32,11 @@ class Pembelian extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['tanggal', 'pembeli', 'total_harga', 'keterangan'], 'required'],
+            [['id_barang', 'tanggal', 'pembeli', 'total_harga', 'keterangan'], 'required'],
+            [['id_barang', 'total_harga'], 'integer'],
             [['tanggal'], 'safe'],
-            [['total_harga'], 'integer'],
             [['pembeli', 'keterangan'], 'string', 'max' => 255],
+            [['id_barang'], 'exist', 'skipOnError' => true, 'targetClass' => Barang::className(), 'targetAttribute' => ['id_barang' => 'id']],
         ];
     }
 
@@ -43,10 +47,19 @@ class Pembelian extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
+            'id_barang' => 'Id Barang',
             'tanggal' => 'Tanggal',
             'pembeli' => 'Pembeli',
             'total_harga' => 'Total Harga',
             'keterangan' => 'Keterangan',
         ];
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getBarang()
+    {
+        return $this->hasOne(Barang::className(), ['id' => 'id_barang']);
     }
 }

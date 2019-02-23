@@ -10,9 +10,9 @@ use yii\widgets\ActiveForm;
 
 <div class="barang-form">
 
-    <?php $form = ActiveForm::begin(); ?>
+    <?php $form = ActiveForm::begin(['options' => ['enctype' => 'multipart/form-data']]); ?>
 
-    <?= $form->field($model, 'gambar')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'gambar')->fileInput() ?>
 
     <?= $form->field($model, 'nama')->textInput(['maxlength' => true]) ?>
 

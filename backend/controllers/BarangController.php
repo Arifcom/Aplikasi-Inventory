@@ -8,6 +8,7 @@ use yii\data\ActiveDataProvider;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\web\UploadedFile;
 
 /**
  * BarangController implements the CRUD actions for Barang model.
@@ -66,7 +67,16 @@ class BarangController extends Controller
     {
         $model = new Barang();
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+        if ($model->load(Yii::$app->request->post())) {
+            $gambar = UploadedFile::getInstance($model, 'gambar');
+
+            if($model->validate()){
+                if (!empty($gambar)) {
+                    $gambar->saveAs(Yii::getAlias('@backend/web/files/images/') . $gambar->baseName . '.' . $gambar->extension);
+                    $model->gambar = 'gambar.' . $gambar->extension;
+                }
+            }
+            $model->save();
             return $this->redirect(['view', 'id' => $model->id]);
         }
 
