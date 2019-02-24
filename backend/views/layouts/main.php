@@ -20,7 +20,7 @@ BackAsset::register($this);
     <title><?= Html::encode($this->title) ?></title>
     <?php $this->head() ?>
 </head>
-<body class="hold-transition skin-black-light sidebar-mini">
+<body class="hold-transition skin-green-light sidebar-mini">
 <?php $this->beginBody() ?>
 
 <div class="wrapper">
@@ -99,7 +99,8 @@ BackAsset::register($this);
             <ul class="sidebar-menu" data-widget="tree">
                 <li class="header" style="text-align: center;">HEADER</li>
                 <!-- Optionally, you can add icons to the links -->
-                <li><?= Html::a('<i class="fa fa-dashboard"></i> <span>Barang</span>', ['/barang']) ?></li>
+                <li><?= Html::a('<i class="fa fa-dashboard"></i> <span>Dahboard</span>', ['/site']) ?></li>
+                <li><?= Html::a('<i class="fa fa-th-large"></i> <span>Barang</span>', ['/barang']) ?></li>
                 <li><?= Html::a('<i class="fa fa-dollar"></i> <span>Pembelian</span>', ['/pembelian']) ?></li>
                 <li><?= Html::a('<i class="fa fa-dollar"></i> <span>Penjualan</span>', ['/penjualan']) ?></li>
                 <li><?= Html::a('<i class="fa fa-signal"></i> <span>Statistik</span>', ['/statistik']) ?></li>

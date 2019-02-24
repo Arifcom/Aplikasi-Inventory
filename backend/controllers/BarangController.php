@@ -35,7 +35,7 @@ class BarangController extends Controller
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [
-                    'delete' => ['POST'],
+                    'delete' => ['GET'],
                 ],
             ],
         ];
@@ -47,12 +47,13 @@ class BarangController extends Controller
      */
     public function actionIndex()
     {
-        $dataProvider = new ActiveDataProvider([
-            'query' => Barang::find(),
-        ]);
+        $query = (new \yii\db\Query())
+            ->select('*')
+            ->from('barang')
+            ->all();
 
         return $this->render('index', [
-            'dataProvider' => $dataProvider,
+            'query' => $query,
         ]);
     }
 
