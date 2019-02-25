@@ -49,6 +49,7 @@ $this->registerJs(
             <table id="data-table" class="table table-bordered table-striped">
                 <thead>
                 <tr>
+                    <th>ID</th>
                     <th>Nama</th>
                     <th>Stok</th>
                     <th>Satuan</th>
@@ -63,6 +64,7 @@ $this->registerJs(
                 foreach($query as $data):
                 ?>
                     <tr>
+                        <td><?= $data['id']; ?></td>
                         <td><?= $data['nama']; ?></td>
                         <td><?= $data['stok']; ?></td>
                         <td><?= $data['satuan']; ?></td>
@@ -77,6 +79,7 @@ $this->registerJs(
                 </tbody>
                 <tfoot>
                 <tr>
+                    <th>ID</th>
                     <th>Nama</th>
                     <th>Stok</th>
                     <th>Satuan</th>

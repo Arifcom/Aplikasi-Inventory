@@ -46,12 +46,14 @@ class PembelianController extends Controller
      */
     public function actionIndex()
     {
-        $dataProvider = new ActiveDataProvider([
-            'query' => Pembelian::find(),
-        ]);
+        $query = (new \yii\db\Query())
+            ->select('*')
+            ->from('pembelian')
+            ->join('INNER JOIN', 'barang', 'pembelian.id_barang = barang.id')
+            ->all();
 
         return $this->render('index', [
-            'dataProvider' => $dataProvider,
+            'query' => $query,
         ]);
     }
 
