@@ -47,7 +47,7 @@ class PembelianController extends Controller
     public function actionIndex()
     {
         $query = (new \yii\db\Query())
-            ->select('*')
+            ->select('*, pembelian.id as id')
             ->from('pembelian')
             ->join('INNER JOIN', 'barang', 'pembelian.id_barang = barang.id')
             ->all();
@@ -100,7 +100,7 @@ class PembelianController extends Controller
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+            return $this->redirect(['index']);
         }
 
         return $this->render('update', [

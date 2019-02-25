@@ -26,7 +26,7 @@ class BarangController extends Controller
                 'class' => AccessControl::className(),
                 'rules' => [
                     [
-                        'actions' => ['index', 'view', 'create', 'update', 'delete'],
+                        'actions' => ['index', 'view', 'create', 'update', 'delete', 'export'],
                         'allow' => true,
                         'roles' => ['@'],
                     ],
@@ -145,5 +145,14 @@ class BarangController extends Controller
         }
 
         throw new NotFoundHttpException('The requested page does not exist.');
+    }
+
+    public function actionExport() {
+        \moonland\phpexcel\Excel::widget([
+            'models' => $allModels,
+            'mode' => 'export', //default value as 'export'
+            'columns' => ['column1','column2','column3'], //without header working, because the header will be get label from attribute label.
+            'header' => ['column1' => 'Header Column 1','column2' => 'Header Column 2', 'column3' => 'Header Column 3'],
+        ]);
     }
 }
