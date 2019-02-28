@@ -47,6 +47,12 @@ $this->registerJs(
             <h3 class="box-title">Data Table Barang</h3>
         </div>
         <div class="box-body">
+            <div class="row text-center">
+                <div class="btn-group">
+                    <a href="#" class="btn btn-default">Import</a>
+                    <?= Html::a('Export', ['penjualan/export'], ['class' => 'btn btn-default']) ?>
+                </div>
+            </div>
             <table id="data-table" class="table table-bordered table-striped">
                 <thead>
                 <tr>

@@ -8,6 +8,8 @@ use common\models\Pembelian;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\AccessControl;
+use yii2tech\spreadsheet\Spreadsheet;
+use yii\data\ActiveDataProvider;
 
 /**
  * PembelianController implements the CRUD actions for Pembelian model.
@@ -24,7 +26,7 @@ class PembelianController extends Controller
                 'class' => AccessControl::className(),
                 'rules' => [
                     [
-                        'actions' => ['index', 'view', 'create', 'update', 'delete'],
+                        'actions' => ['index', 'view', 'create', 'update', 'delete', 'export'],
                         'allow' => true,
                         'roles' => ['@'],
                     ],
@@ -137,5 +139,15 @@ class PembelianController extends Controller
         }
 
         throw new NotFoundHttpException('The requested page does not exist.');
+    }
+
+    public function actionExport()
+    {
+        $exporter = new Spreadsheet([
+            'dataProvider' => new ActiveDataProvider([
+                'query' => Pembelian::find(),
+            ]),
+        ]);
+        return $exporter->send('Pembelian.xls');
     }
 }

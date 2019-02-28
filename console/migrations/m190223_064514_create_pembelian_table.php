@@ -15,7 +15,7 @@ class m190223_064514_create_pembelian_table extends Migration
         $this->createTable('{{%pembelian}}', [
             'id'            => $this->primaryKey(),
             'id_barang'     => $this->integer()->notNull(),
-            'tanggal'       => $this->dateTime()->notNull(),
+            'tanggal'       => $this->date()->notNull(),
             'pembeli'       => $this->string()->notNull(),
             'jumlah'        => $this->integer()->notNull(),
             'total_harga'   => $this->integer()->notNull(),

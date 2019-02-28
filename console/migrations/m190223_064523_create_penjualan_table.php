@@ -15,7 +15,7 @@ class m190223_064523_create_penjualan_table extends Migration
         $this->createTable('{{%penjualan}}', [
             'id'            => $this->primaryKey(),
             'id_barang'     => $this->integer()->notNull(),
-            'tanggal'       => $this->dateTime()->notNull(),
+            'tanggal'       => $this->date()->notNull(),
             'penjual'       => $this->string()->notNull(),
             'jumlah'        => $this->integer()->notNull(),
             'total_harga'   => $this->integer()->notNull(),

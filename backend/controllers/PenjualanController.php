@@ -8,6 +8,8 @@ use common\models\Penjualan;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\AccessControl;
+use yii2tech\spreadsheet\Spreadsheet;
+use yii\data\ActiveDataProvider;
 
 /**
  * PenjualanController implements the CRUD actions for Penjualan model.
@@ -24,7 +26,7 @@ class PenjualanController extends Controller
                 'class' => AccessControl::className(),
                 'rules' => [
                     [
-                        'actions' => ['index', 'view', 'create', 'update', 'delete'],
+                        'actions' => ['index', 'view', 'create', 'update', 'delete', 'export'],
                         'allow' => true,
                         'roles' => ['@'],
                     ],
@@ -137,5 +139,15 @@ class PenjualanController extends Controller
         }
 
         throw new NotFoundHttpException('The requested page does not exist.');
+    }
+
+    public function actionExport()
+    {
+        $exporter = new Spreadsheet([
+            'dataProvider' => new ActiveDataProvider([
+                'query' => Penjualan::find(),
+            ]),
+        ]);
+        return $exporter->send('Penjualan.xls');
     }
 }
