@@ -46,12 +46,14 @@ class PenjualanController extends Controller
      */
     public function actionIndex()
     {
-        $dataProvider = new ActiveDataProvider([
-            'query' => Penjualan::find(),
-        ]);
+        $query = (new \yii\db\Query())
+            ->select('*, penjualan.id as id')
+            ->from('penjualan')
+            ->join('INNER JOIN', 'barang', 'penjualan.id_barang = barang.id')
+            ->all();
 
         return $this->render('index', [
-            'dataProvider' => $dataProvider,
+            'query' => $query,
         ]);
     }
 

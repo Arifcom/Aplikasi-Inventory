@@ -65,8 +65,8 @@ $this->registerJs(
                     <tr>
                         <td><?= $data['id']; ?></td>
                         <td><?= $data['nama']; ?></td>
-                        <td><?= $data['tanggal']; ?></td>
                         <td><?= $data['pembeli']; ?></td>
+                        <td><?= $data['tanggal']; ?></td>
                         <td><?= $data['total_harga']; ?></td>
                         <td><?= Html::a('Update', ['update', 'id' => $data['id']]) ?></td>
                         <td><?= Html::a('Delete', ['delete', 'id' => $data['id']]) ?></td>

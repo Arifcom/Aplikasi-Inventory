@@ -8,6 +8,30 @@ use yii\grid\GridView;
 
 $this->title = 'Penjualans';
 $this->params['breadcrumbs'][] = $this->title;
+$this->registerCssFile(
+    '@web/public/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css',
+    ['depends' => [\yii\bootstrap\BootstrapAsset::className()],]
+);
+$this->registerJsFile(
+    '@web/public/bower_components/datatables.net/js/jquery.dataTables.min.js',
+    ['depends' => [\yii\web\JqueryAsset::className()]]
+);
+$this->registerJsFile(
+    '@web/public/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js',
+    ['depends' => [\yii\web\JqueryAsset::className()]]
+);
+$this->registerJs(
+    '
+            $(\'#data-table\').DataTable({
+                \'paging\'      : true,
+                \'lengthChange\': false,
+                \'searching\'   : true,
+                \'ordering\'    : true,
+                \'info\'        : true,
+                \'autoWidth\'   : false
+            })
+	    '
+);
 ?>
 <div class="penjualan-index">
 
@@ -17,19 +41,52 @@ $this->params['breadcrumbs'][] = $this->title;
         <?= Html::a('Create Penjualan', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
-    <?= GridView::widget([
-        'dataProvider' => $dataProvider,
-        'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
-
-            'id',
-            'id_barang',
-            'tanggal',
-            'penjual',
-            'total_harga',
-            //'keterangan',
-
-            ['class' => 'yii\grid\ActionColumn'],
-        ],
-    ]); ?>
+    <div class="box">
+        <div class="box-header">
+            <h3 class="box-title">Data Table Barang</h3>
+        </div>
+        <div class="box-body">
+            <table id="data-table" class="table table-bordered table-striped">
+                <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nama Barang</th>
+                    <th>Penjual</th>
+                    <th>Tanggal</th>
+                    <th>Total Harga</th>
+                    <th>Edit</th>
+                    <th>Hapus</th>
+                </tr>
+                </thead>
+                <tbody>
+                <?php
+                foreach($query as $data):
+                    ?>
+                    <tr>
+                        <td><?= $data['id']; ?></td>
+                        <td><?= $data['nama']; ?></td>
+                        <td><?= $data['penjual']; ?></td>
+                        <td><?= $data['tanggal']; ?></td>
+                        <td><?= $data['total_harga']; ?></td>
+                        <td><?= Html::a('Update', ['update', 'id' => $data['id']]) ?></td>
+                        <td><?= Html::a('Delete', ['delete', 'id' => $data['id']]) ?></td>
+                    </tr>
+                <?php
+                endforeach;
+                ?>
+                </tbody>
+                <tfoot>
+                <tr>
+                    <th>ID</th>
+                    <th>Nama Barang</th>
+                    <th>Penjual</th>
+                    <th>Tanggal</th>
+                    <th>Total Harga</th>
+                    <th>Edit</th>
+                    <th>Hapus</th>
+                </tr>
+                </tfoot>
+            </table>
+        </div>
+    </div>
 </div>
