@@ -95,7 +95,12 @@ class PembelianController extends Controller
     {
         $model = $this->findModel($id);
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+        if (Yii::$app->request->post()) {
+            $barang = Barang::findOne($_POST['Pembelian']['id_barang']);
+            $barang->stok = ($barang->stok - $model->jumlah) + $_POST['Pembelian']['jumlah'];
+            $barang->save();
+            $model->load(Yii::$app->request->post());
+            $model->save();
             return $this->redirect(['index']);
         }
 
