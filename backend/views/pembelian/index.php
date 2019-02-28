@@ -53,6 +53,7 @@ $this->registerJs(
                     <th>Nama Barang</th>
                     <th>Pembeli</th>
                     <th>Tanggal</th>
+                    <th>Jumlah</th>
                     <th>Total Harga</th>
                     <th>Edit</th>
                     <th>Hapus</th>
@@ -67,6 +68,7 @@ $this->registerJs(
                         <td><?= $data['nama']; ?></td>
                         <td><?= $data['pembeli']; ?></td>
                         <td><?= $data['tanggal']; ?></td>
+                        <td><?= $data['jumlah']; ?></td>
                         <td><?= $data['total_harga']; ?></td>
                         <td><?= Html::a('Update', ['update', 'id' => $data['id']]) ?></td>
                         <td><?= Html::a('Delete', ['delete', 'id' => $data['id']]) ?></td>
@@ -81,6 +83,7 @@ $this->registerJs(
                     <th>Nama Barang</th>
                     <th>Pembeli</th>
                     <th>Tanggal</th>
+                    <th>Jumlah</th>
                     <th>Total Harga</th>
                     <th>Edit</th>
                     <th>Hapus</th>

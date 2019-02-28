@@ -3,11 +3,10 @@
 namespace backend\controllers;
 
 use Yii;
+use common\models\Barang;
 use common\models\Pembelian;
-use yii\data\ActiveDataProvider;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
-use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
 
 /**
@@ -29,12 +28,6 @@ class PembelianController extends Controller
                         'allow' => true,
                         'roles' => ['@'],
                     ],
-                ],
-            ],
-            'verbs' => [
-                'class' => VerbFilter::className(),
-                'actions' => [
-                    'delete' => ['POST'],
                 ],
             ],
         ];
@@ -80,6 +73,9 @@ class PembelianController extends Controller
         $model = new Pembelian();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            $barang = Barang::findOne($_POST['Pembelian']['id_barang']);
+            $barang->stok = $barang->stok + $_POST['Pembelian']['jumlah'];
+            $barang->save();
             return $this->redirect(['view', 'id' => $model->id]);
         }
 

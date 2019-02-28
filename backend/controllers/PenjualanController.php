@@ -4,10 +4,8 @@ namespace backend\controllers;
 
 use Yii;
 use common\models\Penjualan;
-use yii\data\ActiveDataProvider;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
-use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
 
 /**
@@ -29,12 +27,6 @@ class PenjualanController extends Controller
                         'allow' => true,
                         'roles' => ['@'],
                     ],
-                ],
-            ],
-            'verbs' => [
-                'class' => VerbFilter::className(),
-                'actions' => [
-                    'delete' => ['POST'],
                 ],
             ],
         ];
