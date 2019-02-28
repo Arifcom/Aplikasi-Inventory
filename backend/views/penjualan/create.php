@@ -5,6 +5,7 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model common\models\Penjualan */
 
+$this->active = 'Penjualan';
 $this->title = 'Create Penjualan';
 $this->params['breadcrumbs'][] = ['label' => 'Penjualans', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;

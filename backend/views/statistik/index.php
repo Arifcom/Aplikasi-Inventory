@@ -6,6 +6,7 @@ use yii\grid\GridView;
 /* @var $this yii\web\View */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
+$this->active = 'Statistik';
 $this->title = 'Statistik';
 $this->params['breadcrumbs'][] = $this->title;
 $this->registerJsFile(

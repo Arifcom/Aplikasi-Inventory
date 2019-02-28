@@ -99,11 +99,11 @@ BackAsset::register($this);
             <ul class="sidebar-menu" data-widget="tree">
                 <li class="header" style="text-align: center;">HEADER</li>
                 <!-- Optionally, you can add icons to the links -->
-                <li><?= Html::a('<i class="fa fa-dashboard"></i> <span>Dahboard</span>', ['/site']) ?></li>
-                <li><?= Html::a('<i class="fa fa-th-large"></i> <span>Barang</span>', ['/barang']) ?></li>
-                <li><?= Html::a('<i class="fa fa-dollar"></i> <span>Pembelian</span>', ['/pembelian']) ?></li>
-                <li><?= Html::a('<i class="fa fa-dollar"></i> <span>Penjualan</span>', ['/penjualan']) ?></li>
-                <li><?= Html::a('<i class="fa fa-signal"></i> <span>Statistik</span>', ['/statistik']) ?></li>
+                <li <?php if($this->active == "Dashboard") echo "class='active'" ?>><?= Html::a('<i class="fa fa-dashboard"></i> <span>Dahboard</span>', ['/site']) ?></li>
+                <li <?php if($this->active == "Barang") echo "class='active'" ?>><?= Html::a('<i class="fa fa-th-large"></i> <span>Barang</span>', ['/barang']) ?></li>
+                <li <?php if($this->active == "Pembelian") echo "class='active'" ?>><?= Html::a('<i class="fa fa-dollar"></i> <span>Pembelian</span>', ['/pembelian']) ?></li>
+                <li <?php if($this->active == "Penjualan") echo "class='active'" ?>><?= Html::a('<i class="fa fa-dollar"></i> <span>Penjualan</span>', ['/penjualan']) ?></li>
+                <li <?php if($this->active == "Statistik") echo "class='active'" ?>><?= Html::a('<i class="fa fa-signal"></i> <span>Statistik</span>', ['/statistik']) ?></li>
             </ul>
             <!-- /.sidebar-menu -->
         </section>

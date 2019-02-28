@@ -5,6 +5,7 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model common\models\Pembelian */
 
+$this->active = 'Pembelian';
 $this->title = 'Create Pembelian';
 $this->params['breadcrumbs'][] = ['label' => 'Pembelians', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;

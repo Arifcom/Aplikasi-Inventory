@@ -6,6 +6,7 @@ use yii\grid\GridView;
 /* @var $this yii\web\View */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
+$this->active = 'Pembelian';
 $this->title = 'Pembelians';
 $this->params['breadcrumbs'][] = $this->title;
 $this->registerCssFile(

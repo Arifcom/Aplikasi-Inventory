@@ -6,6 +6,7 @@ use yii\widgets\DetailView;
 /* @var $this yii\web\View */
 /* @var $model common\models\Pembelian */
 
+$this->active = 'Pembelian';
 $this->title = $model->id;
 $this->params['breadcrumbs'][] = ['label' => 'Pembelians', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
