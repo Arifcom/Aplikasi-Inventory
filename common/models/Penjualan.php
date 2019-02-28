@@ -32,8 +32,8 @@ class Penjualan extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['id_barang', 'tanggal', 'penjual', 'total_harga', 'keterangan'], 'required'],
-            [['id_barang', 'total_harga'], 'integer'],
+            [['id_barang', 'tanggal', 'penjual', 'jumlah', 'total_harga', 'keterangan'], 'required'],
+            [['id_barang', 'jumlah', 'total_harga'], 'integer'],
             [['tanggal'], 'safe'],
             [['penjual', 'keterangan'], 'string', 'max' => 255],
             [['id_barang'], 'exist', 'skipOnError' => true, 'targetClass' => Barang::className(), 'targetAttribute' => ['id_barang' => 'id']],
@@ -50,6 +50,7 @@ class Penjualan extends \yii\db\ActiveRecord
             'id_barang' => 'Id Barang',
             'tanggal' => 'Tanggal',
             'penjual' => 'Penjual',
+            'jumlah' => 'Jumlah',
             'total_harga' => 'Total Harga',
             'keterangan' => 'Keterangan',
         ];

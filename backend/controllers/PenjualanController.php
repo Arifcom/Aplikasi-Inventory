@@ -3,6 +3,7 @@
 namespace backend\controllers;
 
 use Yii;
+use common\models\Barang;
 use common\models\Penjualan;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
@@ -72,6 +73,9 @@ class PenjualanController extends Controller
         $model = new Penjualan();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            $barang = Barang::findOne($_POST['Penjualan']['id_barang']);
+            $barang->stok = $barang->stok - $_POST['Penjualan']['jumlah'];
+            $barang->save();
             return $this->redirect(['view', 'id' => $model->id]);
         }
 

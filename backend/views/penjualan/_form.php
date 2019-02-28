@@ -18,6 +18,8 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'penjual')->textInput(['maxlength' => true]) ?>
 
+    <?= $form->field($model, 'jumlah')->textInput() ?>
+
     <?= $form->field($model, 'total_harga')->textInput() ?>
 
     <?= $form->field($model, 'keterangan')->textInput(['maxlength' => true]) ?>
