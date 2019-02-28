@@ -95,8 +95,13 @@ class PenjualanController extends Controller
     {
         $model = $this->findModel($id);
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+        if (Yii::$app->request->post()) {
+            $barang = Barang::findOne($_POST['Penjualan']['id_barang']);
+            $barang->stok = ($barang->stok + $model->jumlah) - $_POST['Penjualan']['jumlah'];
+            $barang->save();
+            $model->load(Yii::$app->request->post());
+            $model->save();
+            return $this->redirect(['index']);
         }
 
         return $this->render('update', [
