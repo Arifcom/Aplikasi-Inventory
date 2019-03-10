@@ -8,8 +8,6 @@ use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\AccessControl;
 use yii\web\UploadedFile;
-use yii2tech\spreadsheet\Spreadsheet;
-use yii\data\ActiveDataProvider;
 
 /**
  * BarangController implements the CRUD actions for Barang model.
@@ -139,15 +137,5 @@ class BarangController extends Controller
         }
 
         throw new NotFoundHttpException('The requested page does not exist.');
-    }
-
-    public function actionExport()
-    {
-        $exporter = new Spreadsheet([
-            'dataProvider' => new ActiveDataProvider([
-                'query' => Barang::find(),
-            ]),
-        ]);
-        return $exporter->send('Barang.xls');
     }
 }

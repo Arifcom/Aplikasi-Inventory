@@ -2,14 +2,8 @@
 
 namespace backend\controllers;
 
-use Yii;
-use common\models\Barang;
-use yii\data\ActiveDataProvider;
 use yii\web\Controller;
-use yii\web\NotFoundHttpException;
-use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
-use yii\web\UploadedFile;
 
 class StatistikController extends Controller
 {
