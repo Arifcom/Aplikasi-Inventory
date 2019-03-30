@@ -2,6 +2,7 @@
 
 use yii\helpers\Html;
 use yii\grid\GridView;
+use yii\helpers\Url;
 
 /* @var $this yii\web\View */
 /* @var $dataProvider yii\data\ActiveDataProvider */
@@ -49,7 +50,7 @@ $this->registerJs(
         <div class="box-body">
             <div class="row text-center">
                 <div class="btn-group">
-                    <a href="#" class="btn btn-default">Import</a>
+                    <button type="button" class="btn btn-default" data-toggle="modal" data-target="#import-data-pembelian">Import</button>
                     <?= Html::a('Export', ['pembelian/export'], ['class' => 'btn btn-default']) ?>
                 </div>
             </div>
@@ -100,4 +101,28 @@ $this->registerJs(
         </div>
     </div>
 
+</div>
+
+<div id="import-data-pembelian" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+        <?= Html::beginForm(['pembelian/import'], 'post', ['enctype' => 'multipart/form-data']) ?>
+
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title" style="text-align: center;">Import Data</h4>
+            </div>
+            <div class="modal-body">
+                <input type="file" name="import_data_pembelian" />
+            </div>
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-primary">Submit</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+
+        <?= Html::endForm() ?>
+
+    </div>
 </div>

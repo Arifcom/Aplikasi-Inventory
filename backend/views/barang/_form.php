@@ -12,8 +12,6 @@ use yii\widgets\ActiveForm;
 
     <?php $form = ActiveForm::begin(['options' => ['enctype' => 'multipart/form-data']]); ?>
 
-    <?= $form->field($model, 'gambar')->fileInput() ?>
-
     <?= $form->field($model, 'nama')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'stok')->textInput() ?>
@@ -23,6 +21,8 @@ use yii\widgets\ActiveForm;
     <?= $form->field($model, 'harga_beli')->textInput() ?>
 
     <?= $form->field($model, 'harga_jual')->textInput() ?>
+
+    <?= $form->field($model, 'gambar')->fileInput() ?>
 
     <div class="form-group">
         <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>

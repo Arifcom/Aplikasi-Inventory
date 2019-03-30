@@ -49,14 +49,14 @@ BackAsset::register($this);
                         <!-- Menu Toggle Button -->
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                             <!-- The user image in the navbar-->
-                            <?= Html::img('files/images/avatar.png', array('class' => 'user-image')); ?>
+                            <?= Html::img('@web/files/images/avatar.png', array('class' => 'user-image')); ?>
                             <!-- hidden-xs hides the username on small devices so only the image appears. -->
                             <span class="hidden-xs"><?= Yii::$app->user->identity->username ?></span>
                         </a>
                         <ul class="dropdown-menu">
                             <!-- The user image in the menu -->
                             <li class="user-header">
-                                <?= Html::img('files/images/avatar.png', array('class' => 'img-circle')); ?>
+                                <?= Html::img('@web/files/images/avatar.png', array('class' => 'img-circle')); ?>
 
                                 <p>
                                     <?= Yii::$app->user->identity->username ?>
@@ -86,7 +86,7 @@ BackAsset::register($this);
             <!-- Sidebar user panel (optional) -->
             <div class="user-panel">
                 <div class="pull-left image">
-                    <?= Html::img('files/images/avatar.png', array('class' => 'img-circle')); ?>
+                    <?= Html::img('@web/files/images/avatar.png', array('class' => 'img-circle')); ?>
                 </div>
                 <div class="pull-left info">
                     <p><?= Yii::$app->user->identity->username ?></p>

@@ -24,7 +24,7 @@ class PenjualanController extends Controller
                 'class' => AccessControl::className(),
                 'rules' => [
                     [
-                        'actions' => ['index', 'view', 'create', 'update', 'delete', 'export'],
+                        'actions' => ['index', 'view', 'create', 'update', 'delete', 'import', 'export'],
                         'allow' => true,
                         'roles' => ['@'],
                     ],
